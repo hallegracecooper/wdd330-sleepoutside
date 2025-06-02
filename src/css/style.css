@@ -278,6 +278,7 @@ footer {
   display: none;
 }
 
+/* Category styles */
 .categories {
   padding: 2rem;
   text-align: center;
@@ -315,4 +316,18 @@ footer {
 .category-card h3 {
   margin: 0;
   font-size: 1.2rem;
+}
+
+/* Alert styles */
+.alert-list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.alert-list p {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
 }
