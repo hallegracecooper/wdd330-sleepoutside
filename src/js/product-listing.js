@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
 import { loadHeaderFooter } from "./utils.mjs";
 
@@ -10,8 +10,8 @@ const category = urlParams.get('category');
 if (!category) {
   console.error("❌ Missing category in URL!");
 } else {
-  // ✅ Step 2: Use ProductData and ProductList with the category
-  const dataSource = new ProductData();
+  // ✅ Step 2: Use ExternalServices and ProductList with the category
+  const dataSource = new ExternalServices();
   const element = document.querySelector('.product-list');
   const productList = new ProductList(category, dataSource, element);
 

@@ -330,4 +330,120 @@ footer {
   padding: 1rem;
   text-align: center;
 }
+
+/* Checkout Styles */
+#checkout-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  width: 100%;
+}
+
+#checkout-form fieldset {
+  margin: 1.5em 0;
+  padding: 2em;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  width: 100%;
+}
+
+#checkout-form legend {
+  font-size: var(--large-font);
+  font-weight: bold;
+  color: var(--secondary-color);
+  padding: 0 0.5em;
+}
+
+#checkout-form label {
+  display: block;
+  margin: 1em 0;
+}
+
+#checkout-form input {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.2em;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+}
+
+#checkout-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+#checkout-form button[type="submit"] {
+  width: 100%;
+  margin: 1em 0;
+  padding: 1em;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#checkout-form button[type="submit"]:hover {
+  background-color: var(--tertiary-color);
+}
+
+.order-summary {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1.5em;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.order-summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+  padding: 0.5em 0;
+}
+
+.order-summary p:last-child {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid var(--light-grey);
+  font-size: var(--large-font);
+}
+
+@media screen and (min-width: 768px) {
+  .products {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2em;
+  }
+
+  .order-summary {
+    max-width: 800px;
+    margin: 2em auto;
+    position: static;
+  }
+}
+
+/* Checkout Button Styles */
+.checkout-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.75em 2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-button:hover {
+  background-color: var(--tertiary-color);
+  transform: scale(1.03);
 }

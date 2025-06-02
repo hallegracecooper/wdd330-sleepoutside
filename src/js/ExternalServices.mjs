@@ -1,24 +1,21 @@
 let baseURL = import.meta.env.VITE_SERVER_URL || 'https://wdd330-backend.onrender.com';
 
-// Remove any trailing slash to avoid double slashes in the URL
 if (baseURL.endsWith('/')) {
   baseURL = baseURL.slice(0, -1);
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {}
 
   async getData(category) {
     const url = `${baseURL}/products/search/${category}`;
-    console.log("Fetching from:", url);  // ✅ Should show clean URL
     const response = await fetch(url);
     const data = await response.json();
-    return data.Result; // ✅ Return the result array from API response
+    return data.Result;
   }
 
   async getProductById(id) {
     const url = `${baseURL}/product/${id}`;
-    console.log("Fetching single product:", url);
     const response = await fetch(url);
     const data = await response.json();
     return data.Result;
@@ -27,4 +24,17 @@ export default class ProductData {
   async findProductById(id) {
     return await this.getProductById(id);
   }
-}
+
+  async checkout(order) {
+    const url = `${baseURL}/checkout`;
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+  }
+} 

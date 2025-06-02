@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
 import { loadHeaderFooter } from "./utils.mjs";
 import Alert from './Alert.js';
@@ -7,7 +7,7 @@ import Alert from './Alert.js';
 const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get('category') || 'tents'; // fallback to 'tents'
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const element = document.querySelector('.product-list');
 const productList = new ProductList(category, dataSource, element);
 
