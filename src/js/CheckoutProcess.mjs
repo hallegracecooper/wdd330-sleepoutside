@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, alertMessage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 loadHeaderFooter();
@@ -82,7 +82,7 @@ export default class CheckoutProcess {
   async checkout(form) {
     const order = this.formDataToJSON(form);
 
-    // Add required additional fields
+    // Enrich order data with calculated fields
     order.orderDate = new Date().toISOString();
     order.items = this.packageItems(this.list);
     order.orderTotal = this.orderTotal.toFixed(2);
@@ -90,14 +90,25 @@ export default class CheckoutProcess {
     order.shipping = this.shipping;
 
     try {
+      // 🔁 Attempt to submit the order to the server
       const result = await this.services.checkout(order);
+
       console.log("✅ Order submitted:", result);
       alert("Order submitted successfully!");
-      localStorage.removeItem(this.key); // clear the cart
-      window.location.href = "/confirmation.html"; // or a success page
+
+      // Clear the cart and redirect to success page
+      localStorage.removeItem(this.key);
+      window.location.href = "/checkout/success.html";
     } catch (err) {
+      // 🛑 Catch and handle errors thrown from ExternalServices.checkout()
       console.error("❌ Order failed:", err);
-      alert("There was a problem submitting your order. Please try again.");
+
+      if (err.name === 'servicesError') {
+        const serverMessage = err.message.message || "There was a problem with your order.";
+        alertMessage(serverMessage);
+      } else {
+        alertMessage("An unexpected error occurred. Please try again.");
+      }
     }
   }
 
@@ -106,7 +117,12 @@ export default class CheckoutProcess {
     if (form) {
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        this.checkout(form);
+        const isValid = form.checkValidity();
+        form.reportValidity(); // this will show built-in browser error hints
+
+        if (isValid) {
+          this.checkout(form);
+        }
       });
     }
   }

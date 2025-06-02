@@ -64,3 +64,31 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+
+  alert.innerHTML = `
+    <div class="alert-item">
+      ${message}
+      <span class="alert-close" aria-label="Close alert">×</span>
+    </div>
+  `;
+
+  alert.addEventListener("click", function (e) {
+    if (
+      e.target.tagName === "SPAN" &&
+      e.target.classList.contains("alert-close")
+    ) {
+      alert.remove();
+    }
+  });
+
+  const main = document.querySelector("main");
+  main.prepend(alert);
+
+  if (scroll) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}

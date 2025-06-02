@@ -259,7 +259,7 @@ button {
 
 footer {
   font-size: var(--small-font);
-  padding: 1em;
+  padding: 2em 1em 1em 1em;
 }
 
 /* Cart total styles */
@@ -441,9 +441,42 @@ footer {
   border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2em;
 }
 
 .checkout-button:hover {
   background-color: var(--tertiary-color);
   transform: scale(1.03);
+}
+
+/* Space between button and footer */
+.products p:last-child {
+  margin-bottom: 4em;
+}
+
+/* Alert styles */
+.alert {
+  background-color: #f44336; /* red */
+  color: white;
+  padding: 1em;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-close {
+  cursor: pointer;
+  font-weight: bold;
+  padding-left: 1em;
 }

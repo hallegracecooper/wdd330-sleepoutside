@@ -34,7 +34,12 @@ export default class ExternalServices {
     };
 
     const response = await fetch(url, options);
-    const data = await response.json();
-    return data;
+    const jsonResponse = await response.json();
+    
+    if (response.ok) {
+      return jsonResponse;
+    } else {
+      throw { name: 'servicesError', message: jsonResponse };
+    }
   }
 } 
