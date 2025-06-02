@@ -63,6 +63,7 @@ export async function loadHeaderFooter() {
   
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+  updateCartCount();
 }
 
 export function alertMessage(message, scroll = true) {
@@ -91,4 +92,12 @@ export function alertMessage(message, scroll = true) {
   if (scroll) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+}
+
+export function updateCartCount() {
+  const countElement = document.getElementById("cart-count");
+  if (!countElement) return;
+
+  const cart = getLocalStorage("so-cart") || [];
+  countElement.textContent = cart.length;
 }

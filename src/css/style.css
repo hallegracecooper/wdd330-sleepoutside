@@ -131,6 +131,18 @@ button {
   fill: gray;
 }
 
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 0.65em;
+  font-weight: bold;
+  padding: 0.2em 0.5em;
+  border-radius: 50%;
+}
+
 /* End cart icon styles */
 
 .mission {
